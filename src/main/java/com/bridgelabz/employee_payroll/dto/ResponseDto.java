@@ -2,16 +2,17 @@ package com.bridgelabz.employee_payroll.dto;
 
 import com.bridgelabz.employee_payroll.model.Employee;
 import jakarta.persistence.Entity;
-
-public class ResponseDto {
+import lombok.Data;
+public @Data class ResponseDto {
     private String message;
     private Object data;
 
     public ResponseDto(String message, Object data) {
-        this.message=message;
-        this.data=data;
+        this.message = message;
+        this.data = data;
     }
-
+}
+/*
     public String getMessage(){
         return message;
     }
@@ -30,3 +31,4 @@ public class ResponseDto {
     }
 
 }
+ */
