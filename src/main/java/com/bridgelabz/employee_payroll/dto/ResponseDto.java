@@ -1,24 +1,32 @@
 package com.bridgelabz.employee_payroll.dto;
-//A DTO (Data Transfer Object) is a simple Java object used to transfer data between layers of an application — especially between the controller and model layers or from the client to the backend.
+
+import com.bridgelabz.employee_payroll.model.Employee;
+import jakarta.persistence.Entity;
 
 public class ResponseDto {
     private String message;
     private Object data;
 
-    public ResponseDto(String message, Object data){
+    public ResponseDto(String message, Object data) {
         this.message=message;
-        this.data= data;
+        this.data=data;
     }
+
     public String getMessage(){
         return message;
     }
+
     public void setMessage(String message){
-        this.message=message;
+        this.message= message;
     }
-    public Object getData(){
+
+
+    public Object getObject(){
         return data;
     }
-    public void setData(Object data){
-        this.data=data;
+
+    public void setObject(Object data){
+        this.data= data;
     }
+
 }

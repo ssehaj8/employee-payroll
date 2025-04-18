@@ -1,6 +1,5 @@
 package com.bridgelabz.employee_payroll.model;
 
-
 import com.bridgelabz.employee_payroll.dto.EmployeeDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,41 +8,40 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Employee {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long employeeId;
     private String name;
     private int salary;
 
-    //setters
-    public void setEmployeeId(long employeeId){
+    public Employee(){}
+    public Employee(long employeeId, EmployeeDTO employeeDTO){
         this.employeeId=employeeId;
-    }
-    public void setName(String name){
-        this.name= name;
-    }
-    public void setSalary(int salary){
-        this.salary=salary;
+        this.name= employeeDTO.getName();
+        this.salary= employeeDTO.getSalary();
     }
 
-    //getters
-    public long getEmployeeId(){
+    public long getId(){
         return employeeId;
     }
+
+    public void setId(long employeeId){
+        this.employeeId= employeeId;
+    }
+
     public String getName(){
         return name;
     }
+
+    public void setName(String name){
+        this.name= name;
+    }
+
     public int getSalary(){
         return salary;
     }
-    //default constructor
-    public Employee(){}
-
-    //parametrized constructors are used when we need to add coustom values
-    public Employee(long employeeId, EmployeeDTO employeeDTO){
-        this.employeeId=employeeId;
-        this.name=employeeDTO.getName();
-        this.salary=employeeDTO.getSalary();
+    public void setSalary(int salary){
+        this.salary= salary;
     }
-
 }
