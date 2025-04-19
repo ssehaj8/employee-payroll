@@ -1,47 +1,50 @@
 package com.bridgelabz.employee_payroll.model;
 
 import com.bridgelabz.employee_payroll.dto.EmployeeDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Table(name="payroll_service")
+@Data
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "employeeId")
     private long employeeId;
     private String name;
     private int salary;
+    private String gender;
+    private LocalDate startDate;
+    private String note;
+    private String profilePic;
 
-    public Employee(){}
-    public Employee(long employeeId, EmployeeDTO employeeDTO){
-        this.employeeId=employeeId;
-        this.name= employeeDTO.getName();
-        this.salary= employeeDTO.getSalary();
-    }
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "department")
+    private List<String> departments;
 
-    public long getId(){
-        return employeeId;
-    }
 
-    public void setId(long employeeId){
-        this.employeeId= employeeId;
+    public Employee() {
     }
 
-    public String getName(){
-        return name;
+    public Employee(EmployeeDTO employeeDTO) {
+        this.updateEmployeePayrollData(employeeDTO);
     }
 
-    public void setName(String name){
-        this.name= name;
+    public void updateEmployeePayrollData(EmployeeDTO employeeDTO) {
+        // this.employeeId=employeeId;
+        this.name = employeeDTO.name;
+        this.salary = employeeDTO.salary;
+        this.gender = employeeDTO.gender;
+        this.startDate = employeeDTO.startDate;
+        this.note = employeeDTO.note;
+        this.profilePic = employeeDTO.profilePic;
+        this.departments = employeeDTO.department;
     }
 
-    public int getSalary(){
-        return salary;
-    }
-    public void setSalary(int salary){
-        this.salary= salary;
-    }
 }
