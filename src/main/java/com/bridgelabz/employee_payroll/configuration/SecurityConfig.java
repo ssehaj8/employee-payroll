@@ -1,6 +1,6 @@
-package com.bridgelabz.employee_payroll.config;
-import com.bridgelabz.employee_payroll.utility.JwtAuthenticationEntryPoint;
-import com.bridgelabz.employee_payroll.utility.JwtRequestFilter;
+package com.bridgelabz.employee_payroll.configuration;
+import com.bridgelabz.employee_payroll.util.JwtAuthenticationEntryPoint;
+import com.bridgelabz.employee_payroll.util.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,8 @@ public class SecurityConfig {
     UserDetailsService userDetailsService;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder();}
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();}
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{

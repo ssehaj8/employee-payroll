@@ -1,4 +1,4 @@
-package com.bridgelabz.employee_payroll.utility;
+package com.bridgelabz.employee_payroll.util;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

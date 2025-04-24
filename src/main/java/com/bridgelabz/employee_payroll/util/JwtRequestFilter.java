@@ -1,6 +1,5 @@
-package com.bridgelabz.employee_payroll.utility;
+package com.bridgelabz.employee_payroll.util;
 
-import com.bridgelabz.employee_payroll.service.JwtUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-
+// how to pass on postman jet token
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired

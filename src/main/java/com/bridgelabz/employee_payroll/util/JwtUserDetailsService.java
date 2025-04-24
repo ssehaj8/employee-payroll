@@ -1,4 +1,4 @@
-package com.bridgelabz.employee_payroll.service;
+package com.bridgelabz.employee_payroll.util;
 
 import com.bridgelabz.employee_payroll.model.User;
 import com.bridgelabz.employee_payroll.repositories.UserRepository;
