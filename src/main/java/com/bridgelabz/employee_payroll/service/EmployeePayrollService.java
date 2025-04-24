@@ -16,59 +16,76 @@ import java.util.List;
 @Service
 @Slf4j
 public class EmployeePayrollService implements IEmployeePayrollService{
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    //    private List<Employee> employeeList=new ArrayList<>();
+
+    /*
+    Fetch all employee payroll data.
+    @return List of all employees.
+    */
     public List<Employee> getEmployeePayrollData(){
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeePayrollDataById(long employeeId){
-//        return employeeList.get((int)employeeId-1);
 
-//        return employeeList.stream()
-//                .filter(empData-> empData.getId()==employeeId)
-//                .findFirst()
-//                .orElseThrow(()-> new EmployeePayrollException("Employee Not Found"));
+
+    /*
+    Fetch employee payroll data by employee ID.
+    @param employeeId - ID of the employee.
+    @return Employee object if found, otherwise throws EmployeePayrollException.
+    */
+    public Employee getEmployeePayrollDataById(long employeeId){
         return employeeRepository
                 .findById(employeeId)
                 .orElseThrow(()->new EmployeePayrollException("Employee with employee id "+employeeId+" does not exist!!"));
     }
 
 
+    /*
+    Fetch employees by department.
+    @param department - Department name.
+    @return List of employees belonging to the specified department.
+    */
     @Override
     public List<Employee> getEmployeesByDepartment(String department){
         return employeeRepository.findEmployeesByDepartment(department);
     }
+
+
+    /*
+    Add new employee payroll data.
+    @param employeeDTO - Employee DTO containing new employee details.
+    @return Saved Employee object.
+    */
     public Employee addEmployeePayrollData(EmployeeDTO employeeDTO){
         Employee empData=null;
         empData=new Employee(employeeDTO);
         log.debug("Emp data: "+empData.toString());
-//        employeeList.add(empData);
+
         return employeeRepository.save(empData);
     }
 
-//    public Employee updateEmployeePayrollData(EmployeeDTO employeeDTO){
-//        Employee empData=null;
-//        empData=new Employee(1,employeeDTO);
-//        return empData;
-//    }
 
+    /*
+   Update employee payroll data by employee ID.
+   @param employeeId - ID of the employee to be updated.
+   @param employeeDTO - Employee DTO containing updated employee data.
+   @return Updated Employee object.
+   */
     public Employee updateEmployeePayrollDataById(long employeeId, EmployeeDTO employeeDTO){
         Employee empData=this.getEmployeePayrollDataById(employeeId);
-//        empData.setName(employeeDTO.getName());
-//        empData.setSalary(employeeDTO.getSalary());
-//        employeeList.set((int) (employeeId-1),empData);
         empData.updateEmployeePayrollData(employeeDTO);
         return employeeRepository.save(empData);
     }
 
-    public void deleteEmployeePayrollData(long employeeId) {
-//        EmployeeRepository.deleteEmployeePayrollData(employeeId);
-//        employeeList.remove(employeeId-1);
-//        employeeList.removeIf(emp -> emp.getId() == employeeId);
 
+    /*
+    Delete employee payroll data by employee ID.
+    @param employeeId - ID of the employee to be deleted.
+    */
+    public void deleteEmployeePayrollData(long employeeId) {
         Employee empData=this.getEmployeePayrollDataById(employeeId);
         employeeRepository.delete(empData);
     }

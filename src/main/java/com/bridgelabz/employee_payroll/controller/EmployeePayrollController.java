@@ -21,6 +21,10 @@ public class EmployeePayrollController {
     @Autowired
     private IEmployeePayrollService employeePayrollService;
 
+    /*
+    Get all employee payroll data.
+    @return ResponseEntity containing a list of all employees and a success message.
+    */
 
     @RequestMapping(value = {"", "/", "/home"})
     public ResponseEntity<ResponseDto> getEmployeePayrollData(){
@@ -30,6 +34,12 @@ public class EmployeePayrollController {
         return new ResponseEntity<ResponseDto>(respDto, HttpStatus.OK);
     }
 
+    /*
+    Get employee payroll data by employee ID.
+    @param employeeId - ID of the employee.
+    @return ResponseEntity containing employee data for the given ID and a success message.
+    */
+
     @GetMapping("/get/{employeeId}")
     public ResponseEntity<ResponseDto> getEmployeePayrollData(@PathVariable("employeeId") long employeeId){
         Employee empData=null;
@@ -38,6 +48,11 @@ public class EmployeePayrollController {
         return new ResponseEntity<ResponseDto>( respDto,HttpStatus.OK);
     }
 
+    /*
+    Get employees by department name.
+    @param department - Department name to filter employees.
+    @return ResponseEntity containing a list of employees in the specified department.
+    */
 
     @PutMapping("/department/{department}")
     public ResponseEntity<ResponseDto> getEmployeePayrollData(@PathVariable("department") String department){
@@ -47,6 +62,11 @@ public class EmployeePayrollController {
         return new ResponseEntity<ResponseDto>( respDto,HttpStatus.OK);
     }
 
+    /*
+    Add a new employee to the payroll system.
+    @param employeeDTO - DTO containing new employee details.
+    @return ResponseEntity containing the newly added employee and a success message.
+    */
 
     @PostMapping("/post")
     public ResponseEntity<ResponseDto> addEmployeePayrollData(@Valid @RequestBody EmployeeDTO employeeDTO){
@@ -64,6 +84,14 @@ public class EmployeePayrollController {
 //        return new ResponseEntity<ResponseDTO>( respDTO,HttpStatus.OK);
 //    }
 
+
+    /*
+    Update an existing employee's data by ID.
+    @param employeeId - ID of the employee to be updated.
+    @param employeeDTO - DTO containing updated employee information.
+    @return ResponseEntity containing updated employee data and a success message.
+    */
+
     @PutMapping("/update/{employeeId}")
     public ResponseEntity<ResponseDto> updateEmployeePayrollData(@PathVariable("employeeId") long employeeId,@RequestBody EmployeeDTO employeeDTO){
         Employee empData=null;
@@ -72,6 +100,12 @@ public class EmployeePayrollController {
         return new ResponseEntity<ResponseDto>( respDTO,HttpStatus.OK);
     }
 
+
+      /*
+    Delete an employee's payroll data by ID.
+    @param employeeId - ID of the employee to be deleted.
+    @return ResponseEntity confirming the deletion with the ID of the deleted employee.
+    */
 
     @DeleteMapping("/delete/{employeeId}")
     public ResponseEntity<ResponseDto> deleteEmployeePayrollData(@PathVariable("employeeId") long employeeId){
