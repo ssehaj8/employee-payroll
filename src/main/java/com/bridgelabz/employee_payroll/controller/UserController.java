@@ -1,7 +1,5 @@
 package com.bridgelabz.employee_payroll.controller;
-import com.bridgelabz.employee_payroll.dto.LoginDTO;
-import com.bridgelabz.employee_payroll.dto.RegisterDTO;
-import com.bridgelabz.employee_payroll.dto.ResponseDto;
+import com.bridgelabz.employee_payroll.dto.*;
 import com.bridgelabz.employee_payroll.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class UserController {
     /*
    Register a new user.
    @param registerDTO - DTO containing user registration details.
-   @return ResponseEntity with success or error message and appropriate HTTP status.
+   @return ResponseEntity wit63h success or error message and appropriate HTTP status.
    */
     @PostMapping("/register")
     public ResponseEntity<ResponseDto> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {
@@ -43,5 +41,21 @@ public class UserController {
         return new ResponseEntity<>(responseDTO,
                 responseDTO.getMessage().equals("error") ? HttpStatus.UNAUTHORIZED : HttpStatus.OK);
     }
+
+    @PostMapping("/forgot")
+    public  ResponseEntity<ResponseDto> forgotPassword(@Valid @RequestBody ForgotPasswordDto forgotPasswordDto){
+        ResponseDto responseDTO = userService.forgotPassword(forgotPasswordDto);
+        return new ResponseEntity(responseDTO,
+                responseDTO.getMessage().equals("error") ? HttpStatus.UNAUTHORIZED : HttpStatus.OK);
+    }
+
+    @PostMapping("/reset")
+    public ResponseEntity<ResponseDto> resetPassword(@Valid @RequestBody ResetPasswordDto resetPasswordDTO) {
+        ResponseDto responseDTO = userService.resetPassword(resetPasswordDTO);
+        return new ResponseEntity<>(responseDTO,
+                responseDTO.getMessage().equals("error") ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
+    }
 }
+
+
 

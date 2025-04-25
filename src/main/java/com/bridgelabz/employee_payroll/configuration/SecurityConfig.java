@@ -30,7 +30,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf-> csrf.disable())
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/register", "/login", "/", "/getAddress","/addAddress").permitAll()
+                        .requestMatchers("/forgot","/reset","/register", "/login", "/", "/getAddress","/addAddress").permitAll()
                         .anyRequest().authenticated())
 
                 .exceptionHandling(ex->ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
