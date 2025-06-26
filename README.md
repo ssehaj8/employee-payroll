@@ -1,14 +1,18 @@
 ﻿# employee-payroll
 The Employee Payroll System is a backend service that helps HR teams efficiently manage employee records, salary details, departments, and more — with secure RESTful APIs and database integration.
 
- #What Does It Do?
+ ## What Does It Do?
 ✅ Add, update, and delete employee records
+
 ✅ Store employee details (name, salary, gender, departments)
+
 ✅ Assign departments and track employee associations
+
 ✅ Fetch employee list with filtering by ID or department
+
 ✅ Fully RESTful API with proper validation and error handling
 
-#Tech Stack
+## Tech Stack
 | Technology    | Description                     |
 | ------------- | ------------------------------- |
 | Java 21       | Programming Language            |
@@ -19,34 +23,12 @@ The Employee Payroll System is a backend service that helps HR teams efficiently
 | Maven         | Build and dependency management |
 | Swagger       | API Documentation (Optional)    |
 
-#How It Works (Step-by-Step)
-User (Frontend or API Client)
-    ↓
-[1] Sends request to backend
-    └── e.g., POST /employee to add employee
+## How It Works (Step-by-Step)
+<img src="https://github.com/user-attachments/assets/33366d0e-ee2b-4f59-937f-cf68a0f42674" alt="image" width="400"/>
 
-Spring Boot Controller
-    ↓
-[2] Receives request and validates data (DTOs + @Valid)
 
-Service Layer
-    ↓
-[3] Contains business logic
-    └── e.g., Calculate payroll, check departments
 
-Repository Layer
-    ↓
-[4] Uses JPA to interact with the MySQL/H2 Database
-
-Database
-    ↓
-[5] Stores/fetches employee data
-
-Service → Controller → Response
-    ↓
-[6] JSON response is sent back to user
-
-#Sample APIs
+## Sample APIs
 | Method | Endpoint         | Description           |
 | ------ | ---------------- | --------------------- |
 | POST   | `/employee`      | Add a new employee    |
