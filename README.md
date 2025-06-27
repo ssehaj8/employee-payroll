@@ -24,7 +24,8 @@ The Employee Payroll System is a backend service that helps HR teams efficiently
 | Swagger       | API Documentation (Optional)    |
 
 ## How It Works (Step-by-Step)
-<img src="https://github.com/user-attachments/assets/33366d0e-ee2b-4f59-937f-cf68a0f42674" alt="image" width="400"/>
+<img src="https://github.com/user-attachments/assets/a20bb497-08e1-47e4-b40d-e50fd5a81b4b" alt="image" width="400"/>
+
 
 
 
